@@ -1,7 +1,6 @@
 // BaseNode.js
 import { Handle, Position } from 'reactflow';
 
-// handleConfig: { id, type, position, style }
 export const BaseNode = ({
   id,
   title,
@@ -13,19 +12,20 @@ export const BaseNode = ({
 }) => {
   return (
     <div
-      className="vs-node-card"
+      className="vs-node-card animated-background" // <- add the class here
       style={{
         minWidth,
         minHeight,
         borderRadius: 10,
         border: '1px solid #1f2937',
-        background: '#020617',
         color: '#e5e7eb',
         boxShadow: '0 10px 25px rgba(0,0,0,0.35)',
         padding: '10px 12px',
         display: 'flex',
         flexDirection: 'column',
         gap: 8,
+        // Remove the static background from here
+        // background: '#020617',
       }}
     >
       {handles.map((h) => (
@@ -84,4 +84,3 @@ export const BaseNode = ({
     </div>
   );
 };
-

@@ -31,9 +31,12 @@ export const LLMNode = ({ id }) => {
       ]}
       minHeight={110}
     >
-      <p style={{ margin: 0, color: '#d1d5db' }}>
+      <div className="node-card">
+        <p style={{ margin: 0, color: '#d1d5db' }}>
         Connect system and prompt text to produce a model response.
       </p>
+      </div>
+      
     </BaseNode>
   );
 };

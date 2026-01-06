@@ -1,5 +1,4 @@
 // delayNode.js
-
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
@@ -26,25 +25,20 @@ export const DelayNode = ({ id, data }) => {
           style: { top: '50%' },
         },
       ]}
+      minHeight={100} // optional for uniformity
     >
-      <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <span style={{ fontSize: 11, color: '#9ca3af' }}>Delay (ms)</span>
-        <input
-          type="number"
-          min={0}
-          value={ms}
-          onChange={(e) => setMs(e.target.value)}
-          style={{
-            fontSize: 12,
-            padding: '4px 6px',
-            borderRadius: 6,
-            border: '1px solid #374151',
-            background: '#020617',
-            color: '#e5e7eb',
-          }}
-        />
-      </label>
+      <div className="node-card">
+        <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <span className="node-label">Delay (ms)</span>
+          <input
+            type="number"
+            min={0}
+            value={ms}
+            onChange={(e) => setMs(e.target.value)}
+            className="node-field"
+          />
+        </label>
+      </div>
     </BaseNode>
   );
 };
-

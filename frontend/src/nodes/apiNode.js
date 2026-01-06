@@ -1,5 +1,4 @@
 // apiNode.js
-
 import { useState } from 'react';
 import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
@@ -29,43 +28,31 @@ export const ApiNode = ({ id, data }) => {
       ]}
       minHeight={130}
     >
-      <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <span style={{ fontSize: 11, color: '#9ca3af' }}>URL</span>
-        <input
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          style={{
-            fontSize: 12,
-            padding: '4px 6px',
-            borderRadius: 6,
-            border: '1px solid #374151',
-            background: '#020617',
-            color: '#e5e7eb',
-          }}
-        />
-      </label>
-      <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <span style={{ fontSize: 11, color: '#9ca3af' }}>Method</span>
-        <select
-          value={method}
-          onChange={(e) => setMethod(e.target.value)}
-          style={{
-            fontSize: 12,
-            padding: '4px 6px',
-            borderRadius: 6,
-            border: '1px solid #374151',
-            background: '#020617',
-            color: '#e5e7eb',
-          }}
-        >
-          <option value="GET">GET</option>
-          <option value="POST">POST</option>
-          <option value="PUT">PUT</option>
-          <option value="DELETE">DELETE</option>
-        </select>
-      </label>
+      <div className="node-card">
+        <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <span className="node-label">URL</span>
+          <input
+            type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            className="node-field"
+          />
+        </label>
+
+        <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <span className="node-label">Method</span>
+          <select
+            value={method}
+            onChange={(e) => setMethod(e.target.value)}
+            className="node-field"
+          >
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+          </select>
+        </label>
+      </div>
     </BaseNode>
   );
 };
-

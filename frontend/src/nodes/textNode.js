@@ -44,51 +44,106 @@ export const TextNode = ({ id, data }) => {
 
   return (
     <BaseNode
-      id={id}
-      title="Text"
-      subtitle="Compose templated text with variables"
-      handles={[
-        ...variableHandles,
-        {
-          id: `${id}-output`,
-          type: 'source',
-          position: Position.Right,
-          style: { top: '50%' },
-        },
-      ]}
-      minWidth={dynamicWidth}
-      minHeight={dynamicHeight}
-    >
-      <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <span style={{ fontSize: 11, color: '#9ca3af' }}>
-          Text (use {'{{variable}}'} to add inputs)
+  id={id}
+  title="Text"
+  subtitle="Compose templated text with variables"
+  handles={[
+    ...variableHandles,
+    {
+      id: `${id}-output`,
+      type: 'source',
+      position: Position.Right,
+      style: { top: '50%' },
+    },
+  ]}
+  minWidth={dynamicWidth}
+  minHeight={dynamicHeight}
+>
+  <div
+    className="input-node-card"
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 12,
+      padding: 12,
+      background: '#020617',
+      borderRadius: 12,
+      border: '1px solid #1e293b',
+      transition: 'all 0.25s ease',
+    }}
+  >
+    {/* Textarea */}
+    <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <span
+        style={{
+          fontSize: 10,
+          color: '#94a3b8',
+          letterSpacing: '0.05em',
+          textTransform: 'uppercase',
+        }}
+      >
+        Text (use {'{{variable}}'} to add inputs)
+      </span>
+      <textarea
+        value={currText}
+        onChange={handleTextChange}
+        rows={Math.min(8, Math.max(3, lines.length))}
+        style={{
+          resize: 'none',
+          fontSize: 13,
+          padding: '8px 10px',
+          borderRadius: 8,
+          border: '1px solid #334155',
+          background: '#020617',
+          color: '#e5e7eb',
+          width: '100%',
+          boxSizing: 'border-box',
+          outline: 'none',
+          transition: 'border 0.2s, box-shadow 0.2s',
+        }}
+      />
+    </label>
+
+    {/* Variables display */}
+    {variables.length > 0 && (
+      <div
+        style={{
+          fontSize: 11,
+          color: '#94a3b8',
+          padding: '6px 8px',
+          borderRadius: 8,
+          background: '#020617',
+          border: '1px dashed #334155',
+        }}
+      >
+        Variables:{' '}
+        <span style={{ color: '#e5e7eb' }}>
+          {variables.map((v) => `{{${v}}}`).join(', ')}
         </span>
-        <textarea
-          value={currText}
-          onChange={handleTextChange}
-          rows={Math.min(8, Math.max(3, lines.length))}
-          style={{
-            resize: 'none',
-            fontSize: 12,
-            padding: '4px 6px',
-            borderRadius: 6,
-            border: '1px solid #374151',
-            background: '#020617',
-            color: '#e5e7eb',
-            width: '100%',
-            boxSizing: 'border-box',
-          }}
-        />
-      </label>
-      {variables.length > 0 && (
-        <div style={{ fontSize: 11, color: '#9ca3af' }}>
-          Variables:{' '}
-          <span style={{ color: '#e5e7eb' }}>
-            {variables.map((v) => `{{${v}}}`).join(', ')}
-          </span>
-        </div>
-      )}
-    </BaseNode>
+      </div>
+    )}
+  </div>
+
+  {/* SAME CSS as InputNode */}
+  <style>
+    {`
+    .input-node-card:hover {
+      box-shadow: 0 0 0 1px rgba(59,130,246,0.5),
+                  0 12px 30px rgba(0,0,0,0.6);
+    }
+
+    .input-node-card:focus-within {
+      border-color: #3b82f6;
+      animation: pulseBorder 1.4s ease-out;
+    }
+
+    .input-node-card textarea:focus-visible {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59,130,246,0.4);
+    }
+  `}
+  </style>
+</BaseNode>
   );
 };
 

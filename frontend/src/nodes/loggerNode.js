@@ -1,5 +1,4 @@
 // loggerNode.js
-
 import { Position } from 'reactflow';
 import { BaseNode } from './BaseNode';
 
@@ -23,11 +22,13 @@ export const LoggerNode = ({ id }) => {
           style: { top: '50%' },
         },
       ]}
+      minHeight={110} // optional for uniform height
     >
-      <p style={{ margin: 0, fontSize: 12, color: '#d1d5db' }}>
-        Use this node to tap into the pipeline for debugging and analytics.
-      </p>
+      <div className="node-card">
+        <p style={{ margin: 0, fontSize: 12, color: '#d1d5db' }}>
+          Use this node to tap into the pipeline for debugging and analytics.
+        </p>
+      </div>
     </BaseNode>
   );
 };
-
